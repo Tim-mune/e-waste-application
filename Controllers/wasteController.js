@@ -11,6 +11,9 @@ const registerWaste = async (req, res) => {
 };
 const updateWaste = async (req, res) => {
   // to update about the waste
+  // find the wats to update
+  const { id } = req.params;
+  const waste = await Waste.findOne({ _id: id });
   res.send("register waste");
 };
 const getAllWastes = async (req, res) => {

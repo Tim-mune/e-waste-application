@@ -99,3 +99,26 @@ export default router;
 for jwt secret i used all-keys generator
 
 ## hash passwords using bcrypt js
+
+# auth controller content
+
+```code snippet
+-register a new user
+  const { email, password, name } = req.body;
+  if (!email || !password || !name) {
+    throw new BAD_REQUEST("please provide all fields");
+  }
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    throw new BAD_REQUEST("email is already in use");
+  }
+  const user = await User.create(req.body);
+  const token = user.createJwt();
+  const userClient = {
+    name: user.name,
+    email: user.email,
+    location: user.location,
+  };
+  res.status(StatusCodes.CREATED).json({ userClient, token });
+
+```

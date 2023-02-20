@@ -34,6 +34,10 @@ const WasteSchema = new mongoose.Schema(
       default: "disposed",
       enum: ["disposed", "pending"],
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
