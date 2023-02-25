@@ -5,4 +5,14 @@ import Footer from "./Footer";
 import FormRow from "./FormRow";
 import LandingHeader from "./LandingHeader";
 import Hero from "./Hero";
-export { Action, Features, Header, Footer, FormRow, LandingHeader, Hero };
+import Button from "./Button";
+export {
+  Action,
+  Features,
+  Header,
+  Footer,
+  FormRow,
+  LandingHeader,
+  Hero,
+  Button,
+};
