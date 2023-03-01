@@ -8,17 +8,25 @@ const Navbar = () => {
   const [modal, showModal] = useState(true);
   return (
     <>
-      <header className="p-2 my-4">
-        <nav className="flex justify-between items-center">
+      <header className="p-2">
+        <nav className="flex  justify-between items-center">
           <div className="flex justify-center items-center">
-            <img src="" alt="logo" />
+            <h4 className="text-base font-not text-white">Welcome Tim</h4>
+            <Link
+              to="/"
+              className="mx-4 bg-blue-500 p-1 rounded-xl tracking-widest capitalize text-white hover:opacity-80"
+            >
+              logout
+            </Link>
           </div>
+
           <div>
             <NavLink className="flex gap-4 p-2">
               {navList.map((item, index) => {
                 return (
                   <Link
-                    className="capitalize bg-slate-200 rounded-md hover:opacity-70 hover:translate-y-1 p-1 font-poppins tracking-wider leading-6"
+                    to={item.link}
+                    className="capitalize  rounded-md hover:opacity-70 hover:translate-y-1 p-1 font-poppins tracking-wider leading-6 text-white"
                     key={index}
                   >
                     {item.name}
@@ -28,7 +36,7 @@ const Navbar = () => {
               <button
                 onClick={() => showModal(!modal)}
                 type="button"
-                className="bg-gray-600 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white lg:hidden xl:hidden md:hidden"
+                className="bg-blue-500 inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white lg:hidden xl:hidden md:hidden"
                 aria-expanded="false"
               >
                 <span className="sr-only">Open main menu</span>
@@ -39,6 +47,9 @@ const Navbar = () => {
                 )}
               </button>
             </NavLink>
+          </div>
+          <div>
+            <h5>progress goes here</h5>
           </div>
         </nav>
         {modal && <Modal />}

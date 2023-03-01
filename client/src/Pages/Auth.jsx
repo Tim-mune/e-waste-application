@@ -1,5 +1,6 @@
 import { FormRow, Button } from "../components";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Auth = () => {
   const initialState = {
     name: "",
@@ -27,8 +28,8 @@ const Auth = () => {
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h2 className="text-3xl font-poppins mb-8 text-cyan-500">
-        Register for an Account
+      <h2 className="text-3xl font-poppins mb-8 capitalize text-cyan-400">
+        {values.isMember ? "Register for an account" : " Login to your account"}
       </h2>
       <form className="flex flex-col items-center" onSubmit={OnSubmit}>
         {values.isMember && (
@@ -73,18 +74,24 @@ const Auth = () => {
           <button
             type="button"
             onClick={toggleMember}
-            className="p-2 my-4 mx-4 hover:text-lg hover:opacity-90 bg-blue-600 rounded-lg border border-white text-white"
+            className="p-2 my-4 mx-4 hover:text-lg hover:opacity-90  rounded-lg tracking-wider text-white underline"
           >
-            {values.isMember ? "Register" : "Login"}
+            {values.isMember ? "Login" : "Register"}
           </button>
         </p>
         <button
           type="submit"
-          className="bg-blue-500 text-cyan-100 py-2 px-4 rounded-lg hover:bg-blue-600 hover:translate-y-1 tracking-widest font-not"
+          className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 hover:translate-y-1 tracking-widest font-poppins"
         >
           {values.isMember ? "Register" : "Login"}
         </button>
       </form>
+      <Link
+        to="/"
+        className="bg-blue-500 text-white py-1 px-4 rounded-lg hover:bg-blue-600 hover:translate-y-1 tracking-widest font-poppins my-10 "
+      >
+        Back Home?
+      </Link>
     </div>
   );
 };

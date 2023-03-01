@@ -16,10 +16,6 @@ const navList = [
     link: "faq",
   },
   {
-    name: "Sign in/Sign up",
-    link: "/register",
-  },
-  {
     name: "Contact",
     link: "contact",
   },

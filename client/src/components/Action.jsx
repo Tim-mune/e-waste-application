@@ -8,9 +8,9 @@ const Action = () => {
       </p>
       <Link
         to="/register"
-        className="bg-blue-600 text-dimWhite p-2 m-2 rounded-lg hover:-translate-y-1 hover:opacity-70 tracking-wider w-1/4 mx-0 mt-2 text-center"
+        className="bg-blue-600 text-white p-2 m-2 rounded-lg hover:-translate-y-1 hover:opacity-70 tracking-wider w-1/4 mx-0 mt-2 text-center"
       >
-        SignUp/Login
+        Get Started
       </Link>
     </div>
   );
