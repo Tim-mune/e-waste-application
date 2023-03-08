@@ -14,25 +14,45 @@ const Action = () => {
       <div>
         <h2 className="text-white tracking-widest">Our partners reviews</h2>
         <div className="lg:flex lg:flex-row gap-4 xs:flex flex-col sm:justify-center items-center sm:grid sm:grid-cols-2 md:flex md:flex-row">
-          <div className="w-[250px] h-[250px] mt-4 bg-slate-400 rounded-lg">
-            <img src="" alt="image goes here" />
-            <h4>name</h4>
-            <p>review goes here</p>
+          <div className="w-[250px] h-auto mt-4 bg-slate-400 rounded-2xl shadow-lg p-4 flex flex-col items-center">
+            <img src="" alt="image goes here" className=" top-0" />
+            <h4 className="mt-4 text-white tracking-wider">Kabarak Ict</h4>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+              quibusdam deserunt atque omnis modi velit ab maxime ullam quod
+              accusantium porro dolore in voluptatibus placeat nisi, blanditiis
+              ut. Illum, animi.
+            </p>
           </div>
-          <div className="w-[250px] h-[250px] mt-4 bg-slate-400 rounded-lg">
-            <img src="" alt="image goes here" />
-            <h4>name</h4>
-            <p>review goes here</p>
+          <div className="w-[250px] h-auto mt-4 bg-slate-400 rounded-2xl shadow-lg p-4 flex flex-col items-center">
+            <img src="" alt="image goes here" className=" top-0" />
+            <h4 className="mt-4 text-white tracking-wider">Kabarak Ict</h4>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+              quibusdam deserunt atque omnis modi velit ab maxime ullam quod
+              accusantium porro dolore in voluptatibus placeat nisi, blanditiis
+              ut. Illum, animi.
+            </p>
           </div>
-          <div className="w-[250px] h-[250px] mt-4 bg-slate-400 rounded-lg">
-            <img src="" alt="image goes here" />
-            <h4>name</h4>
-            <p>review goes here</p>
+          <div className="w-[250px] h-auto mt-4 bg-slate-400 rounded-2xl shadow-lg p-4 flex flex-col items-center">
+            <img src="" alt="image goes here" className=" top-0" />
+            <h4 className="mt-4 text-white tracking-wider">Kabarak Ict</h4>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+              quibusdam deserunt atque omnis modi velit ab maxime ullam quod
+              accusantium porro dolore in voluptatibus placeat nisi, blanditiis
+              ut. Illum, animi.
+            </p>
           </div>
-          <div className="w-[250px] h-[250px] mt-4 bg-slate-400 rounded-lg">
-            <img src="" alt="image goes here" />
-            <h4>name</h4>
-            <p>review goes here</p>
+          <div className="w-[250px] h-auto mt-4 bg-slate-400 rounded-2xl shadow-lg p-4 flex flex-col items-center">
+            <img src="" alt="image goes here" className=" top-0" />
+            <h4 className="mt-4 text-white tracking-wider">Kabarak Ict</h4>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+              quibusdam deserunt atque omnis modi velit ab maxime ullam quod
+              accusantium porro dolore in voluptatibus placeat nisi, blanditiis
+              ut. Illum, animi.
+            </p>
           </div>
         </div>
       </div>
