@@ -90,6 +90,13 @@ router.route("/update:id").patch(update);
 router.route("/delete:id").delete(remove);
 export default router;
 
+# protection middleware will be installed later
+
+-express rate limiter
+-helmet
+
+-
+
 ## api testing on postman
 
 -setting up the routes in folders and the adding requests respectively
@@ -123,15 +130,35 @@ for jwt secret i used all-keys generator
 
 ```
 
+# auth
+
+- sending emails to the users to confirm their emails before baing able to login
+- sending emails for forgot password
+- enabling reset password for the users
+
+```this will be included to enable 2fa
+
 ```
+
 using favicon.ico to find the icon for the application
-```
+
+````
 
 ## -visit the link [favicon.ico]
 
 ```the link is
 
-```
+````
+
+## Proxy setup in vite app to send request to server
+
+server: {
+proxy: {
+"/api": "http://localhost:3000",
+},
+},
+
+- the code above is for enabling use of proxy for connection to avoid cors errors
 
 ## install axios to fetch data frm the server
 

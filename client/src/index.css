@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    background-color: #173b88;
+    background-image: linear-gradient(to right, #6f82e4, #1f2ebe);
     margin: 0;
   }
   h1 {

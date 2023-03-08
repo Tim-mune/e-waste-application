@@ -21,6 +21,7 @@ const register = async (req, res) => {
   };
   res.status(StatusCodes.CREATED).json({ userClient, token });
 };
+// code to send confirmation email
 const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {

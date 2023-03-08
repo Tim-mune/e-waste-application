@@ -11,6 +11,7 @@ const Navbar = () => {
       <header className="p-2">
         <nav className="flex  justify-between items-center">
           <div className="flex justify-center items-center">
+            <button>toggle sidebar</button>
             <h4 className="text-base font-not text-white">Welcome Tim</h4>
             <Link
               to="/"

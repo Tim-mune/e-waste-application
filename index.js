@@ -7,22 +7,23 @@ import cookieParser from "cookie-parser";
 import connectDB from "./db/connect.js";
 import authRoutes from "./Routes/authRoutes.js";
 import wasteRoutes from "./Routes/wasteRoute.js";
+import cors from "cors";
 
 // middleware import to handle error and not-found errors
 import errorMiddleware from "./middleware/errorMiddleware.js";
 import notFound from "./middleware/notFoundMiddleware.js";
 
 // test route or home route
+// app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-// routers
-
+// // routers
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/wastes", wasteRoutes);
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   //   throw new Error("not found");
-  res.send("home route");
+  res.json({ msg: "connected" });
 });
 // middleware
 app.use(errorMiddleware);

@@ -1,12 +1,16 @@
+import Button from "./Button";
+import { landing } from "../assets";
 const LandingHeader = () => {
   return (
-    <header className="p-2 mt-4">
+    <header className="">
       <nav className="flex justify-between items-center">
-        <div className="p-2">
+        <div className="p-2 flex">
           <img src="" alt="logo" />
         </div>
-        <div>
-          <h3 className=" text-cyan-200">E-waste Manager</h3>
+        <div className="flex justify-between items-center">
+          <h3 className=" text-white font-semibold font-not capitalize">
+            Smart waste
+          </h3>
         </div>
       </nav>
     </header>
