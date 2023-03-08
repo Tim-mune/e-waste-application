@@ -4,8 +4,8 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 import Modal from "./Modal";
 const Navbar = () => {
-  const [links, hideLinks] = useState(true);
-  const [modal, showModal] = useState(true);
+  const [links, hideLinks] = useState(false);
+  const [modal, showModal] = useState(false);
   return (
     <>
       <header className="p-2">
