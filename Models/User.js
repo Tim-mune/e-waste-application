@@ -31,8 +31,20 @@ const UserSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["company", "user"],
+      enum: ["admin", "user"],
       default: "user",
+    },
+    verificationToken: String,
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    verified: Date,
+    passwordToken: {
+      type: String,
+    },
+    passwordTokenExpirationDate: {
+      type: Date,
     },
   },
   { timestamps: true }

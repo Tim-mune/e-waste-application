@@ -1,4 +1,4 @@
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, icon }) => {
   return (
     <button
       type="submit"

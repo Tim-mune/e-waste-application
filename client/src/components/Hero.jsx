@@ -20,27 +20,27 @@ const Hero = () => {
         <div>
           <h3 className="font-not text-green-400 capitalize">features</h3>
           <ul className="grid grid-cols-3 gap-2 grid-flow-row">
-            <li className="bg-blue-500 rounded-md">
+            <li className="bg-indigo-400 rounded-md p-2 text-indigo">
               collect watse Lorem ipsum dolor sit, amet consectetur adipisicing
               elit. Velit, quos.
             </li>
-            <li className="bg-blue-500 rounded-md">
+            <li className="bg-blue-500 rounded-md p-2">
               collect watse Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Deserunt, officia!
             </li>
-            <li className="bg-blue-500 rounded-md">collect watse</li>
-            <li className="bg-blue-500 rounded-md">collect watse</li>
-            <li className="bg-blue-500 rounded-md">collect watse</li>
+            <li className="bg-blue-500 rounded-md p-2">collect watse</li>
+            <li className="bg-blue-500 rounded-md p-2">collect watse</li>
+            <li className="bg-blue-500 rounded-md p-2">collect watse</li>
           </ul>
         </div>
         <div>
           <h3 className="text-green-400 font-not">benefits</h3>
           <ul className="grid grid-cols-3 grid-flow-row gap-2">
-            <li className="bg-blue-500 rounded-md">Easy access</li>
-            <li className="bg-blue-500 rounded-md">Easy access</li>
-            <li className="bg-blue-500 rounded-md">Easy access</li>
-            <li className="bg-blue-500 rounded-md">Easy access</li>
-            <li className="bg-blue-500 rounded-md">Easy access</li>
+            <li className="bg-blue-500 rounded-md p-2">Easy access</li>
+            <li className="bg-blue-500 rounded-md p-2">Easy access</li>
+            <li className="bg-blue-500 rounded- p-2">Easy access</li>
+            <li className="bg-blue-500 rounded-md p-2">Easy access</li>
+            <li className="bg-blue-500 rounded-md p-2">Easy access</li>
           </ul>
         </div>
       </div>

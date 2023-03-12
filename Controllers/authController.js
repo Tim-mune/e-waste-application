@@ -12,7 +12,9 @@ const register = async (req, res) => {
   if (userExists) {
     throw new BAD_REQUEST("email is already in use");
   }
-  const user = await User.create(req.body);
+  const isFirstAccount = (await User.countDocuments({})) < 4;
+  const role = isFirstAccount ? "admin" : "user";
+  const user = await User.create({ email, password, name, role });
   const token = user.createJwt();
   const userClient = {
     name: user.name,
@@ -21,7 +23,10 @@ const register = async (req, res) => {
   };
   res.status(StatusCodes.CREATED).json({ userClient, token });
 };
-// code to send confirmation email
+// code to send confirmation
+const confirmEmail = async (req, res) => {
+  res.send("confirm your email");
+};
 const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -58,13 +63,16 @@ const update = async (req, res) => {
   user.password = undefined;
   res.status(StatusCodes.OK).json(user);
 };
+const resetPassword = async (req, res) => {
+  res.send("rest your email here");
+};
 const remove = async (req, res) => {
   const { id } = req.params;
   // check if user is present first
-  // const user = await User.findOne({ _id: id });
-  // if (!user) {
-  //   throw new BAD_REQUEST("user does not exist");
-  // }
+  const user = await User.findOne({ _id: id });
+  if (!user) {
+    throw new BAD_REQUEST("user does not exist");
+  }
   console.log(user);
 };
-export { register, login, update, remove };
+export { register, login, update, remove, resetPassword, confirmEmail };
