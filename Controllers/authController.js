@@ -42,7 +42,8 @@ const login = async (req, res) => {
   }
   user.password = undefined;
   const token = user.createJwt();
-  attachCookie({ res, token });
+  // attachCookie({ res, token });
+
   res.status(StatusCodes.OK).json({ user, token });
 };
 const update = async (req, res) => {

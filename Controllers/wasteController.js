@@ -6,7 +6,12 @@ const registerWaste = async (req, res) => {
   if (!name || !type || !condition) {
     throw new BAD_REQUEST("please provide all fields");
   }
-  const waste = await Waste.create(req.body);
+  const waste = await Waste.create({
+    name,
+    type,
+    condition,
+    createdBy: req.user,
+  });
   res.status(StatusCodes.CREATED).json({ waste });
 };
 const updateWaste = async (req, res) => {

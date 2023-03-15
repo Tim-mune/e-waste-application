@@ -1,6 +1,10 @@
-import { FormRow, Button } from "../components";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { FormRow, Button, Loading } from "../components";
+import { ToastContainer, toast } from "react-toastify";
+import { useState, useEffect } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../context/appcontext";
+import "react-toastify/dist/ReactToastify.css";
+
 const Auth = () => {
   const initialState = {
     name: "",
@@ -8,6 +12,23 @@ const Auth = () => {
     password: "",
     isMember: true,
   };
+  const {
+    registerUser,
+    loginUser,
+    isLoading,
+    loginUserText,
+    registerUserText,
+    user,
+  } = useGlobalContext();
+  const navigate = useNavigate();
+  // check if theres user
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
+    }
+  }, [user, navigate]);
 
   // functions to send data to the server comming up
 
@@ -16,9 +37,25 @@ const Auth = () => {
     e.preventDefault();
     const { name, email, password, isMember } = values;
     if (!email || !password || (!isMember && !name)) {
-      console.log("provide all values please");
+      toast.warn("please provide all values");
+      return;
     }
-    console.log(values);
+    const userRegister = { name, email, password };
+    const userLogin = { email, password };
+    // const text = (
+    //   <h4 className="tracking-widest font-poppins">
+    //     Logging in to your account
+    //   </h4>
+    // );
+
+    if (values.isMember) {
+      loginUser(userLogin);
+      toast.success("Success... redirecting");
+    }
+    if (!values.isMember) {
+      registerUser(userRegister);
+      toast.success("registration successful ...redirecting");
+    }
   };
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -28,16 +65,30 @@ const Auth = () => {
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h2 className="text-3xl font-poppins mb-8 capitalize text-cyan-400">
+      <h2 className="text-2xl mb-5 text-gray-200">
         {values.isMember ? "Register for an account" : " Login to your account"}
       </h2>
       <form className="flex flex-col items-center" onSubmit={OnSubmit}>
-        {values.isMember && (
+        <h5 className="mb-2">Smart waste inc</h5>
+        {isLoading && <Loading />}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {!values.isMember && (
           <label htmlFor="name" className="text-xl mb-2 text-cyan-300">
-            Name:
+            <h5>Name</h5>
           </label>
         )}
-        {values.isMember && (
+        {!values.isMember && (
           <input
             type="text"
             id="name"
@@ -48,7 +99,7 @@ const Auth = () => {
         )}
 
         <label htmlFor="email" className="text-xl mb-2 text-cyan-300">
-          Email:
+          <h5 className="tracking-widest">Email</h5>
         </label>
         <input
           type="email"
@@ -58,37 +109,38 @@ const Auth = () => {
           onChange={onChange}
         />
 
-        <label htmlFor="password" className="text-xl mb-2 text-cyan-300">
-          Password:
+        <label htmlFor="password" className="text-xl mb-2">
+          <h5 className="tracking-widest">Password</h5>
         </label>
         <input
           type="password"
           id="password"
           name="password"
-          minLength="8"
+          minLength="7"
           className="p-2 mb-4 rounded-lg w-full"
           onChange={onChange}
         />
-        <p className="text-cyan-400 font-poppins">
+        <p className="text-gray-200 font-poppins">
           {values.isMember ? "Already a member?" : " Not a member?"}
           <button
             type="button"
             onClick={toggleMember}
-            className="p-2 my-4 mx-4 hover:text-lg hover:opacity-90  rounded-lg tracking-wider text-white underline"
+            className="p-2 my-4 mx-4 hover:scale-90 duration-300 hover:opacity-90  rounded-lg tracking-wider text-gray-100 underline"
           >
-            {values.isMember ? "Login" : "Register"}
+            {values.isMember ? "Register" : "Login"}
           </button>
         </p>
         <button
+          disabled={isLoading}
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 hover:translate-y-1 tracking-widest font-poppins"
+          className="bg-slate-800 text-white py-1 px-2 m-2 rounded-lg hover:bg-slate-600 duration-300 hover:scale-90 tracking-widest font-poppins w-1/2 xl:w-1/6 "
         >
-          {values.isMember ? "Register" : "Login"}
+          {values.isMember ? "Login" : "Register"}
         </button>
       </form>
       <Link
         to="/"
-        className="bg-blue-500 text-white py-1 px-4 rounded-lg hover:bg-blue-600 hover:translate-y-1 tracking-widest font-poppins my-10 "
+        className="bg-red-800 text-white py-1 px-2 m-2 rounded-lg hover:bg-red-500 duration-300 hover:scale-90 tracking-widest font-poppins w-1/4 xl:w-1/6 lg:w-1/6 md:w-1/6 text-center"
       >
         Back Home?
       </Link>

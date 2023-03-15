@@ -14,16 +14,18 @@ import errorMiddleware from "./middleware/errorMiddleware.js";
 import notFound from "./middleware/notFoundMiddleware.js";
 
 // test route or home route
+// import auth middleware
+import auth from "./middleware/auth.js";
 // app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
 // // routers
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/wastes", wasteRoutes);
-app.get("/", (req, res) => {
+app.use("/api/v1/wastes", auth, wasteRoutes);
+app.get("/api", (req, res) => {
   //   throw new Error("not found");
-  res.json({ msg: "connected" });
+  res.json({ msg: "hello" });
 });
 // middleware
 app.use(errorMiddleware);

@@ -1,7 +1,11 @@
-import React from "react";
+import { CollectWasteForm } from "../components";
 
 const CreateWaste = () => {
-  return <div>CreateWaste</div>;
+  return (
+    <div>
+      <CollectWasteForm />
+    </div>
+  );
 };
 
 export default CreateWaste;

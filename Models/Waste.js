@@ -26,7 +26,7 @@ const WasteSchema = new mongoose.Schema(
     date: {
       type: Date,
       default: Date.now,
-      // required: true,
+      required: true,
     },
     disposalStatus: {
       type: String,
@@ -37,7 +37,7 @@ const WasteSchema = new mongoose.Schema(
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
-      required: [true, "please provide a user"],
+      // required: [true, "please provide a user"],
     },
   },
   { timestamps: true }

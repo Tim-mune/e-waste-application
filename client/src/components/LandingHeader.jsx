@@ -6,7 +6,7 @@ const LandingHeader = () => {
       <nav className="flex justify-between items-center">
         <div className="p-2 flex">
           <img
-            src={Logo}
+            src=""
             alt="logo"
             className="w-[150px] h-[70px] border border-none rounded-2xl"
           />

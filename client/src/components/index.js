@@ -6,6 +6,14 @@ import FormRow from "./FormRow";
 import LandingHeader from "./LandingHeader";
 import Hero from "./Hero";
 import Button from "./Button";
+import Loading from "./Loading";
+import ProfileMain from "./ProfileMain";
+import ProfileUpdateForm from "./ProfileUpdateForm";
+import StatsPage from "./StatsPage";
+import CollectWasteForm from "./CollectWasteForm";
+import Refurbished from "./Refurbished";
+import SmallSideBar from "./SmallSideBar";
+import BigSideBar from "./BigSideBar";
 export {
   Action,
   Features,
@@ -15,4 +23,10 @@ export {
   LandingHeader,
   Hero,
   Button,
+  Loading,
+  ProfileUpdateForm,
+  ProfileMain,
+  StatsPage,
+  CollectWasteForm,
+  Refurbished,
 };

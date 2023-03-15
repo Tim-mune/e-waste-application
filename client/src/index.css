@@ -7,27 +7,56 @@
 @layer base {
   body {
     background-image: linear-gradient(to right, #6f82e4, #1f2ebe);
+    /* background: linear-gradient(
+      153.47deg,
+      rgba(255, 255, 255, 0) -341.94%,
+      #14101d 95.11%
+    ); */
     margin: 0;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.5;
+    word-spacing: 5px;
+  }
   h1 {
-    font-size: 40px;
-    font-family: "Poppins";
-    text-decoration: underline;
+    font-size: 3rem;
+    font-weight: 600;
+    color: whitesmoke;
+    letter-spacing: -0.02em;
   }
   h2 {
-    font-size: 35px;
-    font-family: "Poppins";
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: whitesmoke;
+    letter-spacing: 0.125rem;
+    text-transform: capitalize;
   }
   h3 {
-    font-size: 30px;
-    font-family: "Poppins";
+    font-size: 2rem;
+    font-weight: 400;
+    color: whitesmoke;
+    letter-spacing: -0.01em;
   }
   h4 {
-    font-size: 25px;
-    font-family: "Poppins";
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: whitesmoke;
+    letter-spacing: -0.01em;
   }
   h5 {
-    font-size: 15px;
+    font-size: 1.25rem;
+    font-weight: 200;
+    color: whitesmoke;
+    letter-spacing: 0;
+  }
+  p {
+    color: floralwhite;
+    line-height: 2rem;
     font-family: "Poppins";
   }
 }
