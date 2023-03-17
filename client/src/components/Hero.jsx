@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import { lazy, Suspense } from "react";
 const Hero = () => {
   return (
-    <section className="lg:grid lg:grid-cols-2 p-2 mt-5 justify-center items-center md:grid md:grid-cols-2 sm:grid sm:grid-cols-2 xs:flex xs:flex-col gap-4 ">
+    <section className="lg:grid lg:grid-cols-2 p-2 mt-5 justify-center items-center md:grid md:grid-cols-2 sm:grid sm:grid-cols-2 xs:flex xs:flex-col gap-4  ">
       <div className="">
         <img src={landing} alt="trash" />
       </div>
       <div className="flex flex-col xs:mt-10 ">
         <h2 className="">Who are we?</h2>
-        <p className="tracking-wider">
+        <p className="tracking-widest">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,
           voluptatibus quas eos natus corporis vel unde rem. Ad ab itaque
           necessitatibus laboriosam quidem optio officiis accusantium corporis
@@ -21,16 +21,24 @@ const Hero = () => {
           provident commodi enim deleniti aperiam doloremque amet, error, nulla
           reiciendis quas architecto dolores!
         </p>
-        <Link
-          to="/register"
-          className="bg-slate-800 text-white py-1 px-2 m-2 rounded-lg hover:bg-slate-600 duration-300 hover:scale-90 tracking-widest font-poppins w-1/4"
-        >
-          Get Started
-        </Link>
+        <div className="flex justify-between mt-10">
+          <Link
+            to="/register"
+            className="bg-slate-800 text-white py-1 px-2 m-2 rounded-lg hover:bg-slate-600 duration-300 hover:scale-90 tracking-widest font-poppins w-1/4"
+          >
+            Get Started
+          </Link>
+          <Link
+            to="/about"
+            className="bg-slate-800 text-white py-1 px-2 m-2 rounded-lg hover:bg-slate-600 duration-300 hover:scale-90 tracking-widest font-poppins w-1/4 "
+          >
+            Learn More
+          </Link>
+        </div>
       </div>
-      <div>
+      <div className="">
         <h2 className="">features</h2>
-        <ul className="grid grid-cols-3 gap-2 grid-flow-row">
+        <ul className="grid grid-cols-2 gap-2 grid-flow-row">
           {FeaturesHero.map((item, index) => {
             return (
               <li className="bg-slate-100 rounded-md p-2 text-" key={index}>
@@ -42,7 +50,7 @@ const Hero = () => {
       </div>
       <div>
         <h2 className="">Goals</h2>
-        <ul className="grid grid-cols-3 grid-flow-row gap-2">
+        <ul className="grid grid-cols-2 grid-flow-row gap-2">
           {Benefits.map((item, index) => (
             <li key={index} className="bg-slate-100 rounded-md p-2">
               {item.benefit}

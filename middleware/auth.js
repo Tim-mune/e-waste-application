@@ -1,24 +1,14 @@
 import Jwt from "jsonwebtoken";
-// import { Unauthenticated } from "../errors.js";
 import { Unauthenticated } from "../errors/index.js";
 const auth = async (req, res, next) => {
-  const authToken = req.headers.authorization;
-  if (!authToken && authToken.startsWith("Bearer")) {
-    throw new Unauthenticated("failed authentication");
-  }
+  console.log(req.cookies.token);
   try {
-    const token = authToken.split(" ")[1];
+    const token = req.cookies.token;
     const payload = Jwt.verify(token, process.env.JWT_SECRET);
     req.user = payload.userId;
-    console.log(req.user);
     next();
   } catch (error) {
     throw new Unauthenticated("authentication failed");
   }
 };
 export default auth;
-// const auth = async (req, res, next) => {
-//   console.log("my auth middleware");
-//   next();
-// };
-// export default auth;

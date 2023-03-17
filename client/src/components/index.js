@@ -14,6 +14,7 @@ import CollectWasteForm from "./CollectWasteForm";
 import Refurbished from "./Refurbished";
 import SmallSideBar from "./SmallSideBar";
 import BigSideBar from "./BigSideBar";
+import DashboardNav from "./DashboardNav";
 export {
   Action,
   Features,
@@ -29,4 +30,5 @@ export {
   StatsPage,
   CollectWasteForm,
   Refurbished,
+  DashboardNav,
 };

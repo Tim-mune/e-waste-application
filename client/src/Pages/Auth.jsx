@@ -1,4 +1,4 @@
-import { FormRow, Button, Loading } from "../components";
+import { Loading } from "../components";
 import { ToastContainer, toast } from "react-toastify";
 import { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -12,21 +12,16 @@ const Auth = () => {
     password: "",
     isMember: true,
   };
-  const {
-    registerUser,
-    loginUser,
-    isLoading,
-    loginUserText,
-    registerUserText,
-    user,
-  } = useGlobalContext();
+  const { registerUser, loginUser, isLoading, dispayText, user } =
+    useGlobalContext();
+  const text = dispayText;
   const navigate = useNavigate();
   // check if theres user
   useEffect(() => {
     if (user) {
       setTimeout(() => {
         navigate("/dashboard");
-      }, 3000);
+      }, 2000);
     }
   }, [user, navigate]);
 
@@ -42,15 +37,10 @@ const Auth = () => {
     }
     const userRegister = { name, email, password };
     const userLogin = { email, password };
-    // const text = (
-    //   <h4 className="tracking-widest font-poppins">
-    //     Logging in to your account
-    //   </h4>
-    // );
 
     if (values.isMember) {
       loginUser(userLogin);
-      toast.success("Success... redirecting");
+      toast.success("success... redirecting");
     }
     if (!values.isMember) {
       registerUser(userRegister);
@@ -68,6 +58,7 @@ const Auth = () => {
       <h2 className="text-2xl mb-5 text-gray-200">
         {values.isMember ? "Register for an account" : " Login to your account"}
       </h2>
+      <p>{text}</p>
       <form className="flex flex-col items-center" onSubmit={OnSubmit}>
         <h5 className="mb-2">Smart waste inc</h5>
         {isLoading && <Loading />}

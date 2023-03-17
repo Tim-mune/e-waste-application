@@ -17,7 +17,6 @@ const AppContext = ({ children }) => {
     isLoading: false,
     user: null,
     displayText: "",
-    registerUserText: "",
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   const registerUser = async (currentUser) => {
@@ -40,7 +39,11 @@ const AppContext = ({ children }) => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: { user, token } });
     } catch (error) {
       console.log(error);
-      dispatch({ type: LOGIN_USER_ERROR });
+      console.log(error);
+      dispatch({
+        type: LOGIN_USER_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
     }
   };
 

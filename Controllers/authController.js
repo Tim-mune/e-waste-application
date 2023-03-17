@@ -1,9 +1,8 @@
 import User from "../Models/User.js";
 import { StatusCodes } from "http-status-codes";
 import { BAD_REQUEST, Not_Found, Unauthenticated } from "../errors/index.js";
+import attachCookie from "../utils/attachCookie.js";
 const register = async (req, res) => {
-  // get input as email name and password for registration
-  // they are all required in the user model
   const { email, password, name } = req.body;
   if (!email || !password || !name) {
     throw new BAD_REQUEST("please provide all fields");
@@ -15,13 +14,12 @@ const register = async (req, res) => {
   const isFirstAccount = (await User.countDocuments({})) < 4;
   const role = isFirstAccount ? "admin" : "user";
   const user = await User.create({ email, password, name, role });
-  const token = user.createJwt();
   const userClient = {
     name: user.name,
     email: user.email,
     location: user.location,
   };
-  res.status(StatusCodes.CREATED).json({ userClient, token });
+  res.status(StatusCodes.CREATED).json({ userClient });
 };
 // code to send confirmation
 const confirmEmail = async (req, res) => {
@@ -42,9 +40,9 @@ const login = async (req, res) => {
   }
   user.password = undefined;
   const token = user.createJwt();
-  // attachCookie({ res, token });
+  await attachCookie({ res, token });
 
-  res.status(StatusCodes.OK).json({ user, token });
+  res.status(StatusCodes.OK).json({ user });
 };
 const update = async (req, res) => {
   const { id } = req.params;

@@ -7,7 +7,7 @@ import {
   deleteWaste,
 } from "../Controllers/wasteController.js";
 router.route("/waste").post(registerWaste);
-router.route("/updatewaste").patch(updateWaste);
-router.route("getwaste").get(getAllWastes);
-router.route("deletewaste:id").delete(deleteWaste);
+router.route("/updatewaste/:id").patch(updateWaste);
+router.route("/getwastes").get(getAllWastes);
+router.route("/deletewaste/:id").delete(deleteWaste);
 export default router;

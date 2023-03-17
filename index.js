@@ -1,6 +1,7 @@
 import express from "express";
 const app = express();
 import "express-async-errors";
+import morgan from "morgan";
 import dotenv from "dotenv";
 dotenv.config();
 import cookieParser from "cookie-parser";
@@ -19,6 +20,7 @@ import auth from "./middleware/auth.js";
 // app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+app.use(morgan("tiny"));
 
 // // routers
 app.use("/api/v1/auth", authRoutes);

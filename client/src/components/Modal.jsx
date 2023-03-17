@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import navList from "../helpers/navlist";
 const Modal = () => {
   return (
-    <div className="bg-slate-400 rounded-lg mx-auto my-auto w-1/2 p-3">
+    <div className="bg-slate-400 rounded-lg mx-auto my-auto w-1/2 p-3 z-50">
       <div className="flex flex-col gap-2 items-center">
         {navList.map((item, index) => {
           return (

@@ -16,7 +16,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       user: action.payload.user,
-      registerUserText: "User registered... redirecting",
+      displayText: "User registered... redirecting",
     };
   }
   if (action.type == REGISTER_USER_ERROR) {
@@ -35,7 +35,11 @@ const reducer = (state, action) => {
     };
   }
   if (action.type == LOGIN_USER_ERROR) {
-    return { ...state, isLoading: false };
+    return {
+      ...state,
+      isLoading: false,
+      displayText: action.payload.msg,
+    };
   }
 
   if (action.type == LOGOUT_USER) {

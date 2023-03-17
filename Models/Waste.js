@@ -4,19 +4,18 @@ const WasteSchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      unique: [true, "a waste with a similar name exists"],
       maxlength: 100,
       required: [true, "please provide waste name"],
     },
     type: {
       type: String,
-      required: true,
+      required: [true, "please provide waste type"],
       trim: true,
     },
     condition: {
       type: String,
-      required: true,
-      enum: ["working", "not working", "spoilt", "re-usable"],
+      required: [true, "please provide waste name"],
+      enum: ["working", "spoilt", "re-usable"],
       default: "spoilt",
     },
     location: {
@@ -28,6 +27,13 @@ const WasteSchema = new mongoose.Schema(
       default: Date.now,
       required: true,
     },
+    weight: {
+      type: Number,
+      required: [true, "please Provide waste weight"],
+    },
+    value: {
+      type: Number,
+    },
     disposalStatus: {
       type: String,
       // required: true,
@@ -37,7 +43,7 @@ const WasteSchema = new mongoose.Schema(
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
-      // required: [true, "please provide a user"],
+      required: [true, "please provide a user"],
     },
   },
   { timestamps: true }
