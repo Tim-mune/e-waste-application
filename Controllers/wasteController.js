@@ -29,6 +29,7 @@ const updateWaste = async (req, res) => {
       .status(StatusCodes.BAD_REQUEST)
       .json({ msg: "resources can not be found" });
   }
+  
   res.send("register waste");
 };
 const getAllWastes = async (req, res) => {
