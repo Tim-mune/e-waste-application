@@ -12,7 +12,11 @@ const dashboardLinks = [
     link: "/dashboard/waste",
   },
   {
-    name: "Refurbished devices",
+    name: "Wastes",
+    link: "/dashboard/devices",
+  },
+  {
+    name: "Refurbished",
     link: "/dashboard/devices",
   },
 ];

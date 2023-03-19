@@ -14,7 +14,9 @@ import CollectWasteForm from "./CollectWasteForm";
 import Refurbished from "./Refurbished";
 import SmallSideBar from "./SmallSideBar";
 import BigSideBar from "./BigSideBar";
+import ProfileDashboard from "./ProfileDashboard";
 import DashboardNav from "./DashboardNav";
+import FormRowSelect from "./FormRowSelect";
 export {
   Action,
   Features,
@@ -31,4 +33,6 @@ export {
   CollectWasteForm,
   Refurbished,
   DashboardNav,
+  ProfileDashboard,
+  FormRowSelect,
 };

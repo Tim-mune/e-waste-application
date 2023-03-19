@@ -9,6 +9,10 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   LOGOUT_USER,
+  SHOW_MODAL,
+  COLLECTWASTE_BEGIN,
+  COLLECTWASTE_SUCCESS,
+  CREATEWASTE_ERROR,
 } from "./actions";
 // using global context to manage state in our application using context api and use reducer
 const GlobalContext = createContext();
@@ -17,6 +21,12 @@ const AppContext = ({ children }) => {
     isLoading: false,
     user: null,
     displayText: "",
+    modal: false,
+    wasteCondition: ["working", "spoilt"],
+    wasteType: ["Home-equipment", "Office-equipment", "other"],
+    waste: null,
+    totalWastes: 0,
+    disposedWasted: 0,
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   const registerUser = async (currentUser) => {
@@ -38,8 +48,6 @@ const AppContext = ({ children }) => {
       console.log(data);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: { user, token } });
     } catch (error) {
-      console.log(error);
-      console.log(error);
       dispatch({
         type: LOGIN_USER_ERROR,
         payload: { msg: error.response.data.msg },
@@ -47,12 +55,34 @@ const AppContext = ({ children }) => {
     }
   };
 
+  const showModal = () => {
+    dispatch({ type: SHOW_MODAL });
+  };
+
   const logOut = async () => {
     dispatch({ type: LOGOUT_USER });
   };
+
+  const createWaste = async (wasteObject) => {
+    try {
+      const res = await axios.post("/api/v1/wastes/waste", wasteObject);
+      console.log(res);
+      console.log(wasteObject);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <GlobalContext.Provider
-      value={{ ...state, registerUser, loginUser, logOut }}
+      value={{
+        ...state,
+        registerUser,
+        loginUser,
+        logOut,
+        showModal,
+        createWaste,
+      }}
     >
       {children}
     </GlobalContext.Provider>

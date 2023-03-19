@@ -6,6 +6,10 @@ import {
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
   LOGOUT_USER,
+  SHOW_MODAL,
+  COLLECTWASTE_BEGIN,
+  COLLECTWASTE_SUCCESS,
+  COLLECTWASTE_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   if (action.type == REGISTER_USER_BEGIN) {
@@ -44,6 +48,10 @@ const reducer = (state, action) => {
 
   if (action.type == LOGOUT_USER) {
     return { ...state, user: null };
+  }
+
+  if (action.type == SHOW_MODAL) {
+    return { ...state, modal: !state.modal };
   }
 };
 export default reducer;

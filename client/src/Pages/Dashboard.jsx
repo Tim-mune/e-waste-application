@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, DashboardNav } from "../components";
-import Modal from "../components/Modal";
 import { useGlobalContext } from "../context/appcontext";
 import { BiUserCircle, BiLogOutCircle } from "react-icons/bi";
 import { AiOutlineLogout, AiOutlineClose } from "react-icons/ai";
@@ -14,9 +13,9 @@ const Dashboard = () => {
   const closeSideBar = () => {
     hideSideBar(!sideBar);
   };
-  const { user, logOut } = useGlobalContext();
+  const { user, logOut, modal } = useGlobalContext();
   return (
-    <section className="flex">
+    <section className="flex duration-300">
       <main className="w-2/12 lg:block md:block bg-cyan-600 sm:hidden xs:hidden ">
         <aside
           className=" flex flex-col items-center
@@ -63,9 +62,9 @@ const Dashboard = () => {
           </div>
         </aside>
       </main>
-      <main className="w-10/12 bg-cyan-700 min-h-screen xs:w-full sm:w-full ">
+      <main className="w-10/12 bg-cyan-700 min-h-screen xs:w-full sm:w-full duration-300 ">
         <DashboardNav />
-        <Outlet />
+        {!modal && <Outlet />}
       </main>
     </section>
   );

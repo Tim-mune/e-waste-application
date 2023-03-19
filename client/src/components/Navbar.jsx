@@ -53,7 +53,6 @@ const Navbar = () => {
             <h5>progress goes here</h5>
           </div>
         </nav>
-        {modal && <Modal />}
       </header>
     </>
   );

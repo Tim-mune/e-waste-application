@@ -1,12 +1,21 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import navList from "../helpers/navlist";
+import { useGlobalContext } from "../context/appcontext";
+import dashboardLinks from "../helpers/dashBoard";
 const Modal = () => {
+  const { showModal } = useGlobalContext();
   return (
-    <div className="bg-slate-400 rounded-lg mx-auto my-auto w-1/2 p-3 z-50">
-      <div className="flex flex-col gap-2 items-center">
-        {navList.map((item, index) => {
+    <div
+      className={`bg-cyan-600 w-5/6 h-[400px] mx-auto my-auto rounded-lg lg:invisible xl:invisible md:invisible sm:invisible mt-20 `}
+    >
+      <div className="flex flex-col gap-2 items-center min-h-full justify-evenly">
+        {dashboardLinks.map((item, index) => {
           return (
-            <Link className="font-poppins hover:translate-y-1 hover:opacity-70 tracking-wider leading-6">
+            <Link
+              onClick={showModal}
+              to={item.link}
+              className="font-poppins hover:rotate-2 hover:translate-y-2 hover:opacity-70 tracking-widest leading-6 text-white text-xl z-50 "
+            >
               {item.name}
             </Link>
           );

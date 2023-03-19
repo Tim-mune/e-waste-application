@@ -36,23 +36,29 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-      <div className="">
+      <div className="p-4">
         <h2 className="">features</h2>
-        <ul className="grid grid-cols-2 gap-2 grid-flow-row">
+        <ul className="grid grid-cols-2 gap-4 grid-flow-row m-2">
           {FeaturesHero.map((item, index) => {
             return (
-              <li className="bg-slate-100 rounded-md p-2 text-" key={index}>
+              <li
+                className=" bg-white rounded-md p-4 m-2 shadow-gray-600 shadow-lg"
+                key={index}
+              >
                 {item.feature}
               </li>
             );
           })}
         </ul>
       </div>
-      <div>
+      <div className="p-4">
         <h2 className="">Goals</h2>
-        <ul className="grid grid-cols-2 grid-flow-row gap-2">
+        <ul className="grid grid-cols-2 grid-flow-row gap-4">
           {Benefits.map((item, index) => (
-            <li key={index} className="bg-slate-100 rounded-md p-2">
+            <li
+              key={index}
+              className="bg-white rounded-md p-4 m-2 shadow-gray-700 shadow-lg"
+            >
               {item.benefit}
             </li>
           ))}

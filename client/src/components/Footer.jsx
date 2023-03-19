@@ -13,22 +13,22 @@ const Footer = () => {
         <div>
           <h4>contact us</h4>
           <h5>+254734679087</h5>
-          <email className="text-white">smartwaste@gmail.com</email>
+          <p className="text-white">smartwaste@gmail.com</p>
         </div>
         <div className="">
           <h4>Follow us</h4>
           <div className="flex justify-evenly items-center">
             <Link className="">
-              <FaTwitter />
+              <FaTwitter className="fill-[#1DA1F2] w-[30px] h-[20px]" />
             </Link>
             <Link className="">
-              <FaInstagram />
+              <FaInstagram className="bg-transparent fill-orange-400 w-[30px] h-[20px]" />
             </Link>
             <Link className="">
-              <FaYoutube />
+              <FaYoutube className="fill-[#FF0000] w-[30px] h-[20px]" />
             </Link>
             <Link className="">
-              <FaPinterestP />
+              <FaPinterestP className="fill-[#E60023] w-[30px] h-[20px]" />
             </Link>
           </div>
         </div>
