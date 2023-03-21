@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import { second, phone } from "../assets";
 const About = () => {
   const AboutHero = () => {

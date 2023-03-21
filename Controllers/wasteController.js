@@ -14,6 +14,7 @@ const registerWaste = async (req, res) => {
     createdBy: req.user,
   });
   res.status(StatusCodes.CREATED).json({ waste });
+  // res.json({ msg: "it works" });
 };
 const updateWaste = async (req, res) => {
   const { id } = req.params;
@@ -29,14 +30,11 @@ const updateWaste = async (req, res) => {
       .status(StatusCodes.BAD_REQUEST)
       .json({ msg: "resources can not be found" });
   }
-  res.send("register waste");
 };
 const getAllWastes = async (req, res) => {
   const wastes = await Waste.find({});
   if (!wastes) {
-    res
-      .status(StatusCodes.BAD_REQUEST)
-      .json({ msg: "resource could not be found" });
+    res.status(StatusCodes.BAD_REQUEST).json({ msg: "no wastes found" });
   }
   res.status(StatusCodes.OK).json({ wastes });
 };

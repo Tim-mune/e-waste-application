@@ -9,30 +9,42 @@ const CollectWasteForm = () => {
     name: "",
     type: "",
     condition: "",
-    weight: null,
-    location,
+    weight: "",
+    location: "",
     date: "",
   };
+  const resetValues = () => {
+    setValues({ ...values, ...initialState });
+  };
   const [values, setValues] = useState(initialState);
-  const { wasteType, wasteCondition, createWaste } = useGlobalContext();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, type, condition, weight, location, date } = values;
-    const waste = {
-      name,
-      type,
-      condition,
-      weight: Number(weight),
-      location,
-      date: new Date().toISOString(date),
-    };
-    if (!name || !type || !condition || !weight || !location || !date) {
-      toast.warn("please provide all fields");
+  const { wasteType, wasteCondition, createWaste, waste } = useGlobalContext();
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const { name, type, condition, weight, location, date } = values;
+      const waste = {
+        name,
+        type,
+        condition,
+        weight: Number(weight),
+        location,
+        date: new Date().toISOString(date),
+      };
+      if (!name || !type || !condition || !weight || !location || !date) {
+        toast.warn("please provide all fields");
+      }
+      if (Number(weight) < 1) {
+        toast.warn("please provide a valid waste weight");
+      }
+      createWaste(waste);
+      toast("waste registered successfully");
+      setTimeout(() => {
+        resetValues();
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+      toast.error("Sorry theres was an error");
     }
-    if (Number(weight) < 1) {
-      toast.warn("please provide a valid waste weight");
-    }
-    createWaste(waste);
   };
   const handleChange = async (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -40,7 +52,7 @@ const CollectWasteForm = () => {
 
   return (
     <section className="min-h-screen container p-4">
-      <main className="">
+      <main className="flex flex-col gap-4">
         <div className="border-2 border-gray-400 rounded-xl p-2">
           <div className="flex flex-col justify-center items-center">
             <h5 className="shadow-lg">Smart Waste inc</h5>
@@ -96,6 +108,40 @@ const CollectWasteForm = () => {
             <Button text="submit" type="submit" />
           </form>
         </div>
+        {waste && (
+          <div>
+            <div className=" flex flex-col items-center justify-center">
+              <div className="border-2 border-gray-400 rounded-xl p-2 w-1/2 xs:w-full sm:w-1/2 lg:w-1/2 xl:w-1/2 flex flex-col flex-1 gap-1 bg-slate-900">
+                <h4>Waste created</h4>
+                <img src="" alt="waste image" />
+                <h5>
+                  waste name{" "}
+                  <span className="float-right text-cyan-400">
+                    {waste.name}
+                  </span>
+                </h5>
+                <h5>
+                  waste condition{" "}
+                  <span className="float-right text-cyan-400">
+                    {waste.condition}
+                  </span>
+                </h5>
+                <h5>
+                  status
+                  <span className="float-right text-cyan-400">
+                    {waste.disposalStatus}
+                  </span>
+                </h5>
+                <h5>
+                  waste type
+                  <span className="float-right text-cyan-400">
+                    {waste.type}
+                  </span>
+                </h5>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </section>
   );

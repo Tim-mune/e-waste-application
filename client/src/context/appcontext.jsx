@@ -13,6 +13,7 @@ import {
   COLLECTWASTE_BEGIN,
   COLLECTWASTE_SUCCESS,
   CREATEWASTE_ERROR,
+  CLEAR_VALUES,
 } from "./actions";
 // using global context to manage state in our application using context api and use reducer
 const GlobalContext = createContext();
@@ -33,8 +34,9 @@ const AppContext = ({ children }) => {
     dispatch({ type: REGISTER_USER_BEGIN });
     try {
       const res = await axios.post("/api/v1/auth/register", currentUser);
-      const { user } = res.data;
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: { user } });
+      const { userClient } = res.data;
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: { user: userClient } });
+      console.log(res);
     } catch (error) {
       dispatch({ type: REGISTER_USER_ERROR });
     }
@@ -44,8 +46,8 @@ const AppContext = ({ children }) => {
     try {
       const res = await axios.post("/api/v1/auth/login", currentUser);
       const { user, token } = res.data;
-      const data = await res.data;
-      console.log(data);
+      // const data = await res.data;
+      // console.log(data);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: { user, token } });
     } catch (error) {
       dispatch({
@@ -64,15 +66,30 @@ const AppContext = ({ children }) => {
   };
 
   const createWaste = async (wasteObject) => {
+    dispatch({ type: COLLECTWASTE_BEGIN });
     try {
       const res = await axios.post("/api/v1/wastes/waste", wasteObject);
+      const { waste } = res.data;
       console.log(res);
-      console.log(wasteObject);
+      dispatch({ type: COLLECTWASTE_SUCCESS, payload: { waste } });
     } catch (error) {
+      dispatch({
+        type: CREATEWASTE_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
       console.log(error);
     }
   };
 
+  const updateUser = async () => {};
+
+  const getAllWastes = async () => {};
+
+  const stats = async () => {};
+
+  const resetValues = async () => {
+    dispatch({ type: CLEAR_VALUES });
+  };
   return (
     <GlobalContext.Provider
       value={{
@@ -82,6 +99,10 @@ const AppContext = ({ children }) => {
         logOut,
         showModal,
         createWaste,
+        resetValues,
+        updateUser,
+        getAllWastes,
+        stats,
       }}
     >
       {children}

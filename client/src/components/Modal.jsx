@@ -12,6 +12,7 @@ const Modal = () => {
         {dashboardLinks.map((item, index) => {
           return (
             <Link
+              key={index}
               onClick={showModal}
               to={item.link}
               className="font-poppins hover:rotate-2 hover:translate-y-2 hover:opacity-70 tracking-widest leading-6 text-white text-xl z-50 "

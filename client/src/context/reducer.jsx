@@ -10,6 +10,7 @@ import {
   COLLECTWASTE_BEGIN,
   COLLECTWASTE_SUCCESS,
   COLLECTWASTE_ERROR,
+  CLEAR_VALUES,
 } from "./actions";
 const reducer = (state, action) => {
   if (action.type == REGISTER_USER_BEGIN) {
@@ -52,6 +53,16 @@ const reducer = (state, action) => {
 
   if (action.type == SHOW_MODAL) {
     return { ...state, modal: !state.modal };
+  }
+
+  if (action.type == COLLECTWASTE_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type == COLLECTWASTE_SUCCESS) {
+    return { ...state, isLoading: false, waste: action.payload.waste };
+  }
+  if (action.type == COLLECTWASTE_ERROR) {
+    return { ...state, isLoading: false, displayText: action.payload.msg };
   }
 };
 export default reducer;

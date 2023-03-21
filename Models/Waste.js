@@ -10,13 +10,13 @@ const WasteSchema = new mongoose.Schema(
     type: {
       type: String,
       required: [true, "please provide waste type"],
+      enum: ["Home-equipment", "Office-equipment", "other"],
       trim: true,
     },
     condition: {
       type: String,
-      required: [true, "please provide waste name"],
-      enum: ["working", "spoilt", "re-usable"],
-      default: "spoilt",
+      required: [true, "please provide waste condition"],
+      enum: ["working", "spoilt"],
     },
     location: {
       type: String,
@@ -30,9 +30,6 @@ const WasteSchema = new mongoose.Schema(
     weight: {
       type: Number,
       required: [true, "please Provide waste weight"],
-    },
-    value: {
-      type: Number,
     },
     disposalStatus: {
       type: String,
