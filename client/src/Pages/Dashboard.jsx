@@ -4,8 +4,7 @@ import { useGlobalContext } from "../context/appcontext";
 import { BiUserCircle, BiLogOutCircle } from "react-icons/bi";
 import { AiOutlineLogout, AiOutlineClose } from "react-icons/ai";
 import dashboardLinks from "../helpers/dashBoard";
-import axios from "axios";
-import { useEffect } from "react";
+
 import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -53,7 +52,6 @@ const Dashboard = () => {
           </div>
           {/* links end here */}
           <div className="flex">
-            <p></p>
             <button
               onClick={logOut}
               className="bg-blue-300 text-white py-1 px-2 rounded-lg hover:bg-blue-100 tracking-widest text-base font-poppins -mb-4 "

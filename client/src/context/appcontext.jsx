@@ -14,6 +14,12 @@ import {
   COLLECTWASTE_SUCCESS,
   CREATEWASTE_ERROR,
   CLEAR_VALUES,
+  ALL_WASTE_BEGIN,
+  ALL_WASTE_SUCCESS,
+  ALL_WASTE_ERROR,
+  SHOWSTATS_BEGIN,
+  SHOWSTATS_SUCCESS,
+  SHOWSTATS_ERROR,
 } from "./actions";
 // using global context to manage state in our application using context api and use reducer
 const GlobalContext = createContext();
@@ -26,8 +32,10 @@ const AppContext = ({ children }) => {
     wasteCondition: ["working", "spoilt"],
     wasteType: ["Home-equipment", "Office-equipment", "other"],
     waste: null,
-    totalWastes: 0,
+    totalWastes: [],
     disposedWasted: 0,
+    refurbished: 0,
+    stats: {},
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   const registerUser = async (currentUser) => {
@@ -70,7 +78,6 @@ const AppContext = ({ children }) => {
     try {
       const res = await axios.post("/api/v1/wastes/waste", wasteObject);
       const { waste } = res.data;
-      console.log(res);
       dispatch({ type: COLLECTWASTE_SUCCESS, payload: { waste } });
     } catch (error) {
       dispatch({
@@ -83,9 +90,39 @@ const AppContext = ({ children }) => {
 
   const updateUser = async () => {};
 
-  const getAllWastes = async () => {};
+  const getAllWastes = async () => {
+    dispatch({ type: ALL_WASTE_BEGIN });
+    try {
+      const res = await axios("/api/v1/wastes/getwastes");
+      const data = res.data;
+      dispatch({ type: ALL_WASTE_SUCCESS, payload: { wastes: data.wastes } });
+      console.log(data);
+    } catch (error) {
+      dispatch({
+        type: ALL_WASTE_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+      console.log(error);
+    }
+  };
 
-  const stats = async () => {};
+  const getStats = async () => {
+    dispatch({ type: SHOWSTATS_BEGIN });
+    try {
+      const { data } = await axios("/api/v1/wastes/stats");
+
+      dispatch({
+        type: SHOWSTATS_SUCCESS,
+        payload: {
+          stats: data.monthlyWastes,
+        },
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: SHOWSTATS_ERROR });
+    }
+  };
 
   const resetValues = async () => {
     dispatch({ type: CLEAR_VALUES });
@@ -102,7 +139,7 @@ const AppContext = ({ children }) => {
         resetValues,
         updateUser,
         getAllWastes,
-        stats,
+        getStats,
       }}
     >
       {children}

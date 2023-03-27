@@ -11,6 +11,12 @@ import {
   COLLECTWASTE_SUCCESS,
   COLLECTWASTE_ERROR,
   CLEAR_VALUES,
+  ALL_WASTE_BEGIN,
+  ALL_WASTE_SUCCESS,
+  ALL_WASTE_ERROR,
+  SHOWSTATS_BEGIN,
+  SHOWSTATS_SUCCESS,
+  SHOWSTATS_ERROR,
 } from "./actions";
 const reducer = (state, action) => {
   if (action.type == REGISTER_USER_BEGIN) {
@@ -63,6 +69,26 @@ const reducer = (state, action) => {
   }
   if (action.type == COLLECTWASTE_ERROR) {
     return { ...state, isLoading: false, displayText: action.payload.msg };
+  }
+
+  if (action.type == ALL_WASTE_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type == ALL_WASTE_SUCCESS) {
+    return { ...state, isLoading: false, totalWastes: action.payload.wastes };
+  }
+  if (action.type == ALL_WASTE_ERROR) {
+    return { ...state, isLoading: false, displayText: action.payload.msg };
+  }
+
+  if (action.type == SHOWSTATS_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type == SHOWSTATS_SUCCESS) {
+    return { ...state, isLoading: false, stats: action.payload.stats };
+  }
+  if (action.type == SHOWSTATS_ERROR) {
+    return { ...state, isLoading: false };
   }
 };
 export default reducer;

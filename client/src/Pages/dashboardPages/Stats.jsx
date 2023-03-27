@@ -1,4 +1,5 @@
 import { StatsPage } from "../../components";
+
 const Stats = () => {
   return (
     <section>

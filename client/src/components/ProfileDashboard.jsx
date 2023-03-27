@@ -45,14 +45,45 @@ const ProfileDashboard = () => {
             </span>
           </h5>
         </div>
-        <div className="border rounded-md  ">
-          <h4>wastesCreated</h4>
+        <div className="border rounded-md flex justify-around ">
+          <div className="">
+            <h4 className="text-fuchsia-400">Total</h4>
+          </div>
+          <div>
+            <p className="">
+              <span className="text-5xl text-sky-500">100</span>
+            </p>
+          </div>
         </div>
-        <div className="border rounded-md ">
-          <h4>disposed wastes</h4>
+        <div className="border rounded-md flex justify-around ">
+          <div className="">
+            <h4 className="text-fuchsia-400">Disposed</h4>
+          </div>
+          <div>
+            <p className="">
+              <span className="text-5xl text-sky-500">40</span>
+            </p>
+          </div>
         </div>
-        <div className="border rounded-md ">
-          <h4>Recycled wastes</h4>
+        <div className="border rounded-md flex justify-around ">
+          <div className="">
+            <h4 className="text-fuchsia-400">Recycled</h4>
+          </div>
+          <div>
+            <p className="">
+              <span className="text-5xl text-sky-500">20</span>
+            </p>
+          </div>
+        </div>
+        <div className="border rounded-md flex justify-around ">
+          <div className="">
+            <h4 className="text-fuchsia-400">Progress</h4>
+          </div>
+          <div>
+            <p className="">
+              <span className="text-5xl text-sky-500 ">60%</span>
+            </p>
+          </div>
         </div>
       </div>
       <div className="lg:grid lg:grid-cols-2 gap-4 justify-center mt-10">

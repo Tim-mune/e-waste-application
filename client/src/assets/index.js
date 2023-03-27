@@ -4,4 +4,6 @@ import second from "./second.jpg";
 import phone from "./phone.jpg";
 import Logo from "./logo.jpg";
 import computer from "./computer.jpg";
-export { landing, first, second, phone, Logo, computer };
+import engineer from "./engineer.svg";
+import workers from "./workers.svg";
+export { landing, first, second, phone, Logo, computer, engineer, workers };

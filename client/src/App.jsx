@@ -3,7 +3,6 @@ import { Auth, About, Error, Collect, Devices, Profile, Stats } from "./Pages";
 import { lazy } from "react";
 const Landing = lazy(() => import("./Pages/Landing"));
 const Dashboard = lazy(() => import("./Pages/Dashboard"));
-import Trial from "./Pages/Trial";
 import ProtectedRoute from "./Pages/ProtectedRoutes";
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/register" element={<Auth />} />
         <Route
-          path="dashboard"
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
@@ -26,7 +25,7 @@ function App() {
         </Route>
 
         <Route path="/about" element={<About />} />
-        <Route path="/trial" element={<Trial />} />
+
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

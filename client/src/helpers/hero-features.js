@@ -1,22 +1,23 @@
 const FeaturesHero = [
   {
-    feature: "collect watse Lorem ipsum dolor sit amet consectetur  ",
-  },
-  {
-    feature: "collect watse Lorem ipsum dolor sit amet consectetur   ",
+    feature:
+      "Provide affordable access to technology for individuals and organizations",
   },
   {
     feature:
-      "collect watse Lorem ipsum dolor sit amet consectetur adipisicin,  ",
+      "Skilled team of experts who can assess, repair, and refurbish electronic devices",
   },
   {
-    feature: "collect watse Lorem ipsum dolor sit amet consectetur  ",
+    feature:
+      "Use of cutting-edge technology and techniques to refurbish electronics to the highest standards",
   },
   {
-    feature: "collect watse Lorem ipsum dolor sit amet consectetur  ",
+    feature:
+      "Use of cutting-edge technology and techniques to refurbish electronics to the highest standards",
   },
   {
-    feature: "collect watse Lorem ipsum dolor sit amet consectetur  ",
+    feature:
+      "Use of cutting-edge technology and techniques to refurbish electronics to the highest standards",
   },
 ];
 export default FeaturesHero;

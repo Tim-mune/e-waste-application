@@ -1,22 +1,22 @@
 const Benefits = [
   {
-    benefit: "collect watse Lorem ipsum dolor sit amet consectetur  ",
-  },
-  {
-    benefit: "collect watse Lorem ipsum dolor sit amet consectetur   ",
+    benefit: "Reduce electronic waste in landfills and promote sustainability",
   },
   {
     benefit:
-      "collect watse Lorem ipsum dolor sit amet consectetur adipisicin,  ",
+      "Provide affordable access to technology for individuals and organizations",
   },
   {
-    benefit: "collect watse Lorem ipsum dolor sit amet consectetur  ",
+    benefit:
+      "Provide affordable access to technology for individuals and organizations",
   },
   {
-    benefit: "collect watse Lorem ipsum dolor sit amet consectetur  ",
+    benefit:
+      "Provide affordable access to technology for individuals and organizations",
   },
   {
-    benefit: "collect watse Lorem ipsum dolor sit amet consectetur  ",
+    benefit:
+      "Provide affordable access to technology for individuals and organizations",
   },
 ];
 export default Benefits;
