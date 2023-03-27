@@ -14,6 +14,8 @@ const register = async (req, res) => {
   const isFirstAccount = (await User.countDocuments({})) < 4;
   const role = isFirstAccount ? "admin" : "user";
   const user = await User.create({ email, password, name, role });
+  const token = user.createJwt();
+  await attachCookie({ res, token });
   const userClient = {
     name: user.name,
     email: user.email,

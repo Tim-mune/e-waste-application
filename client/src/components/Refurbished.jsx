@@ -3,20 +3,27 @@ import moment from "moment";
 import { useGlobalContext } from "../context/appcontext";
 import Loading from "./Loading";
 const Refurbished = () => {
-  const { getAllWastes, totalWastes, isLoading } = useGlobalContext();
+  const { getAllWastes, totalWastes, pages, wastes, isLoading } =
+    useGlobalContext();
   useEffect(() => {
     getAllWastes();
   }, []);
   if (isLoading) {
     return <Loading />;
   }
+  // if (wastes.length < 1) {
+  //   return <p>you have not registred any wastes</p>;
+  // }
+  console.log(totalWastes);
   return (
     <section className="flex flex-1 flex-col">
-      <header>
-        <h4>a form to allow sorting of waste</h4>
+      <header className="p-4">
+        <p className="text-center text-lg capitalize float-right">
+          displaying <span>{wastes.length}</span> out of {totalWastes}
+        </p>
       </header>
       <main className="flex p-4 gap-4 flex-wrap justify-around items-center">
-        {totalWastes.map((item, index) => {
+        {wastes.map((item, index) => {
           const {
             name,
             type,
@@ -66,15 +73,9 @@ const Refurbished = () => {
             </div>
           );
         })}
-        {/* {totalWastes.map((item, index) => {
-          const { name, type, condition, weight, createdAt, disposalStatus } =
-            item;
-          return (
-            <div className="w-[250px] h-auto mt-4 bg-slate-100 rounded-2xl shadow-lg p-4 flex flex-col items-center text-slate-800">
-              <h4>{name}</h4>
-            </div>
-          );
-        })} */}
+        <div>
+          <h4>pagination logic goes here</h4>
+        </div>
       </main>
     </section>
   );

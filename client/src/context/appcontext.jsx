@@ -32,8 +32,10 @@ const AppContext = ({ children }) => {
     wasteCondition: ["working", "spoilt"],
     wasteType: ["Home-equipment", "Office-equipment", "other"],
     waste: null,
-    totalWastes: [],
-    disposedWasted: 0,
+    totalWastes: 0,
+    wastes: [],
+    pages: 0,
+    disposedWastes: 0,
     refurbished: 0,
     stats: {},
   };
@@ -95,7 +97,14 @@ const AppContext = ({ children }) => {
     try {
       const res = await axios("/api/v1/wastes/getwastes");
       const data = res.data;
-      dispatch({ type: ALL_WASTE_SUCCESS, payload: { wastes: data.wastes } });
+      dispatch({
+        type: ALL_WASTE_SUCCESS,
+        payload: {
+          wastes: data.wastes,
+          pages: data.numPages,
+          total: data.totalWastes,
+        },
+      });
       console.log(data);
     } catch (error) {
       dispatch({
@@ -110,7 +119,6 @@ const AppContext = ({ children }) => {
     dispatch({ type: SHOWSTATS_BEGIN });
     try {
       const { data } = await axios("/api/v1/wastes/stats");
-
       dispatch({
         type: SHOWSTATS_SUCCESS,
         payload: {

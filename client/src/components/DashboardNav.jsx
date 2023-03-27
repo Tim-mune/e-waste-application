@@ -8,7 +8,7 @@ const DashboardNav = () => {
 
   return (
     <>
-      <nav className="flex justify-between container duration-300 p-2 xl:invisible lg:invisible md:invisible sm:invisible">
+      <nav className="flex justify-between container duration-300 p-2 xl:invisible lg:invisible md:invisible   sticky top-2">
         <div>
           <p className="capitalize">
             welcome <span className="text-teal-200">{user.name}</span>

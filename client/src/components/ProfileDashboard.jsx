@@ -3,7 +3,7 @@ import Button from "./Button";
 import FormRow from "./FormRow";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import { ToastContainer, toast } from "react-toastify";
 const ProfileDashboard = () => {
   const initialState = {
     name: "",
@@ -12,15 +12,22 @@ const ProfileDashboard = () => {
     email: "",
   };
   const [state, setState] = useState(initialState);
-  const { user } = useGlobalContext();
+  const { user, totalWastes } = useGlobalContext();
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data = {
+      email: state.email,
+      location: state.location,
+      password: state.password,
+      email: state.email,
+    };
   };
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
   return (
     <section className="p-4">
+      <ToastContainer />
       <div className="lg:grid lg:grid-cols-4 xl:grid xl:grid-cols-4 gap-2 xs:flex xs:flex-1 xs:flex-col  md:grid md:grid-cols-4 sm:grid sm:grid-cols-4">
         <div className="border rounded-md col-span-2 row-span-2 p-2">
           <h4 className="text-center font-semibold shadow-lg mt">
@@ -51,7 +58,7 @@ const ProfileDashboard = () => {
           </div>
           <div>
             <p className="">
-              <span className="text-5xl text-sky-500">100</span>
+              <span className="text-5xl text-sky-500">{totalWastes}</span>
             </p>
           </div>
         </div>
@@ -98,28 +105,28 @@ const ProfileDashboard = () => {
             <FormRow
               type="text"
               name="name"
-              value=""
+              value={state.name}
               handleChange={handleChange}
               labelText="Your name"
             />
             <FormRow
               type="email"
               name="email"
-              value=""
+              value={state.email}
               handleChange={handleChange}
               labelText="Your email"
             />
             <FormRow
               type="text"
               name="password"
-              value=""
+              value={state.password}
               handleChange={handleChange}
               labelText="Your password"
             />
             <FormRow
               type="text"
               name="location"
-              value=""
+              value={state.location}
               handleChange={handleChange}
               labelText="Your Location"
             />

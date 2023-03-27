@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ children }) => {
   const { user } = useGlobalContext();
   if (!user) {
-    return <Navigate to="/" />;
+    return <Navigate to="/landing" />;
   } else {
     return children;
   }

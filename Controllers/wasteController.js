@@ -16,7 +16,6 @@ const registerWaste = async (req, res) => {
     createdBy: req.user,
   });
   res.status(StatusCodes.CREATED).json({ waste });
-  // res.json({ msg: "it works" });
 };
 const updateWaste = async (req, res) => {
   const { id } = req.params;
@@ -34,7 +33,7 @@ const updateWaste = async (req, res) => {
   }
 };
 const getAllWastes = async (req, res) => {
-  let result = Waste.find({});
+  let result = Waste.find({ createdBy: req.user });
   if (!result) {
     res.status(StatusCodes.BAD_REQUEST).json({ msg: "no wastes found" });
   }
@@ -42,7 +41,7 @@ const getAllWastes = async (req, res) => {
   const limit = Number(req.query.limit) || 10;
   const skip = (page - 1) * limit;
   result = result.skip(skip).limit(limit);
-  const totalWastes = await Waste.countDocuments({});
+  const totalWastes = await Waste.countDocuments({ createdBy: req.user });
   const numPages = Math.ceil(totalWastes / limit);
   const wastes = await result;
   res.status(StatusCodes.OK).json({ wastes, totalWastes, numPages });

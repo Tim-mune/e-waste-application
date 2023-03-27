@@ -75,7 +75,13 @@ const reducer = (state, action) => {
     return { ...state, isLoading: true };
   }
   if (action.type == ALL_WASTE_SUCCESS) {
-    return { ...state, isLoading: false, totalWastes: action.payload.wastes };
+    return {
+      ...state,
+      isLoading: false,
+      wastes: action.payload.wastes,
+      totalWastes: action.payload.total,
+      pages: action.payload.pages,
+    };
   }
   if (action.type == ALL_WASTE_ERROR) {
     return { ...state, isLoading: false, displayText: action.payload.msg };

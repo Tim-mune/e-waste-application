@@ -1,23 +1,23 @@
 const dashboardLinks = [
   {
     name: "profile",
-    link: "/dashboard/profile",
+    link: "/profile",
   },
   {
     name: "stats",
-    link: "/dashboard/stats",
+    link: "/stats",
   },
   {
     name: "collect waste",
-    link: "/dashboard/waste",
+    link: "/waste",
   },
   {
     name: "Wastes",
-    link: "/dashboard/devices",
+    link: "/devices",
   },
   {
     name: "Refurbished",
-    link: "/dashboard/devices",
+    link: "/devices",
   },
 ];
 export default dashboardLinks;

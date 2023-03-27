@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, DashboardNav } from "../components";
 import { useGlobalContext } from "../context/appcontext";
-import { BiUserCircle, BiLogOutCircle } from "react-icons/bi";
-import { AiOutlineLogout, AiOutlineClose } from "react-icons/ai";
+import { BiUserCircle } from "react-icons/bi";
+import { AiOutlineLogout } from "react-icons/ai";
 import dashboardLinks from "../helpers/dashBoard";
 
 import { Link, Outlet } from "react-router-dom";
@@ -15,19 +15,13 @@ const Dashboard = () => {
   const { user, logOut, modal } = useGlobalContext();
   return (
     <section className="flex duration-300">
-      <main className="w-2/12 lg:block md:block bg-cyan-600 sm:hidden xs:hidden ">
+      <main className="w-2/12 lg:block md:block bg-cyan-600 ss:hidden sm:hidden xs:hidden   ">
         <aside
           className=" flex flex-col items-center
         justify-around h-screen "
         >
           {/* profile information goes here */}
           <div className="flex flex-col">
-            <button
-              onClick={closeSideBar}
-              className="flex absolute top-4 left-5"
-            >
-              <AiOutlineClose className="w-[30px] h-[30px] fill-gray-800 hover:rotate-6" />
-            </button>
             <span>
               <BiUserCircle className="fill-white w-20 h-20 rounded-full object-contain" />
             </span>
@@ -61,7 +55,7 @@ const Dashboard = () => {
           </div>
         </aside>
       </main>
-      <main className="w-10/12 bg-cyan-700 min-h-screen xs:w-full sm:w-full duration-300 ">
+      <main className="w-10/12 bg-cyan-700 min-h-screen xs:w-full sm:w-full duration-300 transition ease-linear ">
         <DashboardNav />
         {!modal && <Outlet />}
       </main>
