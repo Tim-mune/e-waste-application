@@ -1,20 +1,32 @@
 import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import moment from "moment";
 import { useGlobalContext } from "../context/appcontext";
 import Loading from "./Loading";
+import Button from "./Button";
+
 const Refurbished = () => {
-  const { getAllWastes, totalWastes, pages, wastes, isLoading } =
-    useGlobalContext();
+  // const navigate = useNavigate();
+  const {
+    getAllWastes,
+    totalWastes,
+    user,
+    pages,
+    wastes,
+    isLoading,
+    createPages,
+  } = useGlobalContext();
+  const paginate = createPages(totalWastes, 10);
+
   useEffect(() => {
     getAllWastes();
+    // console.log(paginate);
   }, []);
   if (isLoading) {
     return <Loading />;
   }
-  // if (wastes.length < 1) {
-  //   return <p>you have not registred any wastes</p>;
-  // }
-  console.log(totalWastes);
+
   return (
     <section className="flex flex-1 flex-col">
       <header className="p-4">
@@ -39,13 +51,13 @@ const Refurbished = () => {
               className="w-[300px] h-auto mt-4 bg-slate-800 rounded-2xl shadow-md p-2 flex-col gap-2 items-start shadow-dimWhite "
             >
               <div className="flex flex-col">
-                <div className="flex items-start justify-center">
+                {/* <div className="flex items-start justify-center">
                   <img
                     className="rounded-lg bg-teal-300 h-[100px] w-full"
                     src=""
                     alt="image here"
                   />
-                </div>
+                </div> */}
                 <h4>
                   Name
                   <span className="float-right">{name}</span>
@@ -69,12 +81,27 @@ const Refurbished = () => {
                     {moment(createdAt).format("MMM Do YY")}
                   </span>
                 </p>
+                {user.role === "admin" && (
+                  <Button text="Delete" onClick={() => console.log(_id)} />
+                )}
               </div>
             </div>
           );
         })}
-        <div>
-          <h4>pagination logic goes here</h4>
+        <div className="bg-gray-700 w-1/3 rounded-md">
+          <div className="flex">
+            {paginate.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className="bg-slate-300 w-[30px] h-[40px] flex justify-center items-center mx-2 hover:cursor-pointer rounded-lg"
+                  onClick={() => console.log(_id)}
+                >
+                  {item}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </main>
     </section>

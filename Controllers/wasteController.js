@@ -59,7 +59,6 @@ const deleteWaste = async (req, res) => {
   }
   await waste.remove();
   res.status(StatusCodes.OK).json({ msg: " waste was removed successfully" });
-  res.send("delete waste");
 };
 const showStats = async (req, res) => {
   let stats = await Waste.aggregate([

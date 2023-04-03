@@ -1,5 +1,5 @@
 import Button from "./Button";
-import { Logo } from "../assets";
+import { logo } from "../assets";
 const LandingHeader = () => {
   return (
     <header className="">
@@ -8,7 +8,7 @@ const LandingHeader = () => {
           <img
             src=""
             alt="logo"
-            className="w-[150px] h-[70px] border border-none rounded-2xl"
+            className="w-[100px] h-[70px] border border-none rounded-full  bg-transparent"
           />
         </div>
         <div className="flex justify-between items-center">

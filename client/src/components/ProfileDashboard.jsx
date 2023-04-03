@@ -1,5 +1,6 @@
 import { useGlobalContext } from "../context/appcontext";
 import Button from "./Button";
+import moment from "moment";
 import FormRow from "./FormRow";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -12,15 +13,28 @@ const ProfileDashboard = () => {
     email: "",
   };
   const [state, setState] = useState(initialState);
-  const { user, totalWastes } = useGlobalContext();
-  const handleSubmit = (e) => {
+  const { user, totalWastes, wastes, updateUser } = useGlobalContext();
+  const clearValues = () => {
+    setState({ ...initialState });
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const { email, name, password, location } = state;
     const data = {
-      email: state.email,
-      location: state.location,
-      password: state.password,
-      email: state.email,
+      email,
+      name,
+      password,
+      location,
     };
+    if (!email || !location || !password || !name) {
+      toast.warn("please provide all values");
+    } else {
+      await updateUser(data);
+      toast.success("user updated successfully");
+      setTimeout(() => {
+        clearValues();
+      }, 3000);
+    }
   };
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -48,7 +62,7 @@ const ProfileDashboard = () => {
           <h5 className="text-gray-300 mt-2">
             joined:{" "}
             <span className="float-right text-orange-300">
-              {user.createdAt}
+              {moment(user.createdAt).format("MMM Do YY")}
             </span>
           </h5>
         </div>
@@ -68,7 +82,13 @@ const ProfileDashboard = () => {
           </div>
           <div>
             <p className="">
-              <span className="text-5xl text-sky-500">40</span>
+              <span className="text-5xl text-sky-500">
+                {
+                  wastes.filter(
+                    (item, index) => item.disposalStatus === "disposed"
+                  ).length
+                }
+              </span>
             </p>
           </div>
         </div>
@@ -78,7 +98,13 @@ const ProfileDashboard = () => {
           </div>
           <div>
             <p className="">
-              <span className="text-5xl text-sky-500">20</span>
+              <span className="text-5xl text-sky-500">
+                {" "}
+                {
+                  wastes.filter((item, index) => item.condition === "working")
+                    .length
+                }
+              </span>
             </p>
           </div>
         </div>
@@ -88,7 +114,7 @@ const ProfileDashboard = () => {
           </div>
           <div>
             <p className="">
-              <span className="text-5xl text-sky-500 ">60%</span>
+              <span className="text-5xl text-sky-500 ">4%</span>
             </p>
           </div>
         </div>

@@ -30,7 +30,7 @@ const Action = () => {
             return (
               <div
                 key={index}
-                className="w-[250px] h-auto mt-4 bg-slate-100 rounded-2xl shadow-lg p-4 flex flex-col items-center text-slate-800"
+                className="w-[250px] h-auto mt-4 bg-slate-100 rounded-2xl  p-4 flex flex-col items-center text-slate-800 shadow-xl shadow-gray-900"
               >
                 <img
                   src={item.image}

@@ -21,7 +21,7 @@ const Auth = () => {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        navigate("/profile");
+        navigate("/devices");
       }, 2000);
     }
   }, [user, navigate]);
@@ -46,6 +46,9 @@ const Auth = () => {
     if (!values.isMember) {
       registerUser(userRegister);
       toast.success("registration successful ...redirecting");
+    }
+    {
+      dispayText;
     }
   };
   const onChange = (e) => {

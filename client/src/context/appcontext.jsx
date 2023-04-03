@@ -12,7 +12,7 @@ import {
   SHOW_MODAL,
   COLLECTWASTE_BEGIN,
   COLLECTWASTE_SUCCESS,
-  CREATEWASTE_ERROR,
+  COLLECTWASTE_ERROR,
   CLEAR_VALUES,
   ALL_WASTE_BEGIN,
   ALL_WASTE_SUCCESS,
@@ -20,7 +20,17 @@ import {
   SHOWSTATS_BEGIN,
   SHOWSTATS_SUCCESS,
   SHOWSTATS_ERROR,
+  UPDATEUSER_BEGIN,
+  UPDATEUSER_SUCCESS,
+  UPDATE_USER_ERROR,
+  DELETEUSER_BEGIN,
+  DELETEUSER_SUCCESS,
+  DELETEUSER_ERROR,
+  DELETEWASTE_BEGIN,
+  DELETEWASTE_ERROR,
+  DELETEWASTE_SUCCESS,
 } from "./actions";
+import { useParams } from "react-router-dom";
 // using global context to manage state in our application using context api and use reducer
 const GlobalContext = createContext();
 const AppContext = ({ children }) => {
@@ -83,19 +93,27 @@ const AppContext = ({ children }) => {
       dispatch({ type: COLLECTWASTE_SUCCESS, payload: { waste } });
     } catch (error) {
       dispatch({
-        type: CREATEWASTE_ERROR,
+        type: COLLECTWASTE_ERROR,
         payload: { msg: error.response.data.msg },
       });
       console.log(error);
     }
   };
 
-  const updateUser = async () => {};
+  const updateUser = async (data) => {
+    try {
+      const res = await axios.patch("/api/v1//auth/update", data);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const getAllWastes = async () => {
+  const getAllWastes = async (page) => {
+    // const { page } = useParams();
     dispatch({ type: ALL_WASTE_BEGIN });
     try {
-      const res = await axios("/api/v1/wastes/getwastes");
+      const res = await axios(`/api/v1/wastes/getwastes`);
       const data = res.data;
       dispatch({
         type: ALL_WASTE_SUCCESS,
@@ -105,13 +123,11 @@ const AppContext = ({ children }) => {
           total: data.totalWastes,
         },
       });
-      console.log(data);
     } catch (error) {
       dispatch({
         type: ALL_WASTE_ERROR,
         payload: { msg: error.response.data.msg },
       });
-      console.log(error);
     }
   };
 
@@ -125,15 +141,18 @@ const AppContext = ({ children }) => {
           stats: data.monthlyWastes,
         },
       });
-      console.log(data);
     } catch (error) {
-      console.log(error);
       dispatch({ type: SHOWSTATS_ERROR });
     }
   };
-
   const resetValues = async () => {
     dispatch({ type: CLEAR_VALUES });
+  };
+  const deleteWaste = async (req, res) => {};
+  const deleteUser = async (req, res) => {};
+  const createPages = (totalitems, itemsperpage) => {
+    const totalPages = Math.ceil(totalitems / itemsperpage);
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
   };
   return (
     <GlobalContext.Provider
@@ -148,6 +167,9 @@ const AppContext = ({ children }) => {
         updateUser,
         getAllWastes,
         getStats,
+        createPages,
+        deleteWaste,
+        deleteUser,
       }}
     >
       {children}

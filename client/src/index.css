@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    background-image: linear-gradient(to right, #6f82e4, #1f2ebe);
+    background-image: linear-gradient(to right, #6f83e9, #1f2ebe);
     /* background: linear-gradient(
       153.47deg,
       rgba(255, 255, 255, 0) -341.94%,
@@ -19,9 +19,10 @@
   h3,
   h4,
   h5 {
-    font-family: "Poppins", sans-serif;
+    font-family: "poppins", sans-serif;
     line-height: 1.5;
     word-spacing: 5px;
+    font-size: small;
   }
   h1 {
     font-size: 3rem;

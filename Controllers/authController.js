@@ -47,33 +47,32 @@ const login = async (req, res) => {
   res.status(StatusCodes.OK).json({ user });
 };
 const update = async (req, res) => {
-  const { id } = req.params;
+  const id = req.user;
   const { name, password, location, email } = req.body;
-  const user = await User.findOne({ _id: id });
+  const user = await User.findOne({ _id: id }).select("-password");
   if (!user) {
     throw new Not_Found("invalid credentials");
   }
-  if ((!name, !password, !location, !email)) {
+  if ((!name, !location, !email)) {
     throw new BAD_REQUEST("please provide all values");
   }
-  user.password = password;
   user.name = name;
+  user.password = password;
   user.location = location;
   user.email = email;
   user.save();
-  user.password = undefined;
   res.status(StatusCodes.OK).json(user);
 };
 const resetPassword = async (req, res) => {
   res.send("rest your email here");
 };
 const remove = async (req, res) => {
-  const { id } = req.params;
-  // check if user is present first
+  const id = req.user;
   const user = await User.findOne({ _id: id });
   if (!user) {
     throw new BAD_REQUEST("user does not exist");
   }
-  console.log(user);
+
+  res.json(user);
 };
 export { register, login, update, remove, resetPassword, confirmEmail };

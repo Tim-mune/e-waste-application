@@ -14,6 +14,6 @@ router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/confirm-email").post(confirmEmail);
 router.route("/reset-password").post(resetPassword);
-router.route("/update/:id").patch(update);
-router.route("/delete/:id").delete(remove);
+router.route("/update").patch(auth, update);
+router.route("/delete").delete(auth, remove);
 export default router;

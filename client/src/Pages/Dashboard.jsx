@@ -14,8 +14,8 @@ const Dashboard = () => {
   };
   const { user, logOut, modal } = useGlobalContext();
   return (
-    <section className="flex duration-300">
-      <main className="w-2/12 lg:block md:block bg-cyan-600 ss:hidden sm:hidden xs:hidden   ">
+    <section className="flex duration-300 ">
+      <main className="w-2/12 lg:block md:block bg-cyan-600 ss:hidden sm:hidden xs:hidden">
         <aside
           className=" flex flex-col items-center
         justify-around h-screen "
@@ -36,7 +36,7 @@ const Dashboard = () => {
               return (
                 <Link
                   key={index}
-                  className="p-4 capitalize tracking-widest hover:translate-x-3 duration-500 text-gray-200 font-poppins"
+                  className="p-4 capitalize tracking-widest hover:translate-x-3 duration-500 text-gray-200 font-poppins active:text-gray-900"
                   to={item.link}
                 >
                   {item.name}
@@ -55,7 +55,7 @@ const Dashboard = () => {
           </div>
         </aside>
       </main>
-      <main className="w-10/12 bg-cyan-700 min-h-screen xs:w-full sm:w-full duration-300 transition ease-linear ">
+      <main className="w-10/12 bg-cyan-700 min-h-screen xs:w-full sm:w-full duration-300 transition ease-linear">
         <DashboardNav />
         {!modal && <Outlet />}
       </main>

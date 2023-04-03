@@ -19,29 +19,27 @@ const CollectWasteForm = () => {
   const [values, setValues] = useState(initialState);
   const { wasteType, wasteCondition, createWaste, waste } = useGlobalContext();
   const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
-      const { name, type, condition, weight, location, date } = values;
-      const waste = {
-        name,
-        type,
-        condition,
-        weight: Number(weight),
-        location,
-        date: new Date().toISOString(date),
-      };
-      if (!name || !type || !condition || !weight || !location || !date) {
-        toast.warn("please provide all fields");
-      }
-      if (Number(weight) < 1) {
-        toast.warn("please provide a valid waste weight");
-      }
+    e.preventDefault();
+    const { name, type, condition, weight, location, date } = values;
+    const waste = {
+      name,
+      type,
+      condition,
+      weight: Number(weight),
+      location,
+      date: new Date().toISOString(date),
+    };
+    if (!name || !type || !condition || !weight || !location || !date) {
+      toast.warn("please provide all fields");
+    } else if (Number(weight) < 1) {
+      toast.warn("please provide a valid waste weight");
+    } else {
       createWaste(waste);
       toast("waste registered successfully");
       setTimeout(() => {
         resetValues();
       }, 3000);
-    } catch (error) {
+
       console.log(error);
       toast.error("Sorry theres was an error");
     }
